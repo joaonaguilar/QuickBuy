@@ -13,15 +13,6 @@
                #email="ngModel"
                email
                required />
-        <!--<div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
-            <div *ngIf="email.errors.required">
-                E-mail é de preenchimento obrigatório!
-            </div>
-            <div *ngIf="email.errors.email">
-                Informe um e-mail válido!
-            </div>
-        </div>-->
-
         <label for="inputSenha" class="sr-only">Senha</label>
         <input type="password" id="inputSenha" name="senha" placeholder="Senha"
                class="form-control mb-2"
@@ -32,12 +23,15 @@
                [(ngModel)]="usuario.senha"
                #senha="ngModel"
                required />
-        <!--<div class="alert alert-danger" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
-            <div *ngIf="senha.errors.required">
-                Informe a senha!
-            </div>
-        </div>-->
+        <button class="btn btn-primary btn-block mb-3" type="submit" (click)="entrar()" [disabled]="ativar_spinner">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner">
+            </span>
+            Entrar
+        </button>
 
-        <button class="btn btn-primary btn-block" type="submit" (click)="entrar()">Entrar</button>
+        <div class="alert alert-danger" *ngIf="mensagem">
+            {{ mensagem }}
+        </div>
+
     </form>
 </div>
